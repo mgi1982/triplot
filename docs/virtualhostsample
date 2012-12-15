@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    ServerName triplot.local
+    DocumentRoot /home/{user}/triplot/src/web
+    <Directory /home/{user}/triplot/src/web>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Order allow,deny
+        allow from all
+        <IfModule mod_rewrite.c>
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^(.*)$ /app.php [QSA,L]
+        </IfModule>
+    </Directory>
+</VirtualHost>

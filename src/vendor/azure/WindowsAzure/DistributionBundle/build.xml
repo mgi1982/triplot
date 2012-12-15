@@ -1,0 +1,96 @@
+<?xml version="1.0" ?>
+<project name="Windows Azure DistributionBundle" default="build" basedir=".">
+    <property name="azure_distribution_bundle_version" value="v1.0.7" />
+    <property name="azure_blob_version" value="v1.0" />
+    <property name="kvs_version" value="Common21" />
+    <property name="shards_version" value="v1.0" />
+    <property name="taskdemo_version" value="v1.4" />
+    <property name="symfony_version" value="2.0.15" />
+
+    <target name="build">
+        <delete dir="build" />
+        <mkdir dir="build" />
+        <mkdir dir="build/azure-distribution-bundle" />
+
+        <download_github url="https://github.com/beberlei/AzureDistributionBundle/zipball/${azure_distribution_bundle_version}"
+            target="WindowsAzure/DistributionBundle" />
+
+        <download_github url="https://github.com/beberlei/azure-blob-storage/zipball/${azure_blob_version}"
+            target="azure-blob-storage" />
+
+        <download_github url="https://github.com/doctrine/KeyValueStore/zipball/${kvs_version}"
+            target="doctrine-keyvaluestore" />
+
+        <download_github url="https://github.com/doctrine/shards/zipball/${shards_version}"
+            target="doctrine-shards" />
+
+        <download_github url="https://github.com/beberlei/assert/zipball/master"
+            target="assert" />
+
+        <download_github url="https://github.com/beberlei/AzureTaskDemoBundle/zipball/${taskdemo_version}"
+            target="WindowsAzure/TaskDemoBundle" />
+
+        <copy file="build/azure-distribution-bundle/WindowsAzure/DistributionBundle/README.md" todir="build/azure-distribution-bundle" />
+        <zip basedir="build/azure-distribution-bundle/" destfile="build/azure-distribution-bundle-${azure_distribution_bundle_version}.zip" />
+
+        <get src="http://symfony.com/download?v=Symfony_Standard_Vendors_${symfony_version}.zip" dest="build/symfony.zip" />
+        <unzip src="build/symfony.zip" dest="build/symfony-azure-dist" />
+        <unzip src="build/azure-distribution-bundle-${azure_distribution_bundle_version}.zip" dest="build/symfony-azure-dist/Symfony/vendor/azure" />
+        <exec executable="php">
+            <arg value="Resources/bin/patch_kernel.php" />
+            <arg value="build/symfony-azure-dist/Symfony/app/AppKernel.php" />
+        </exec>
+        <exec executable="php">
+            <arg value="Resources/bin/patch_autoload.php" />
+            <arg value="build/symfony-azure-dist/Symfony/app/autoload.php" />
+        </exec>
+
+        <zip basedir="build/symfony-azure-dist" destfile="build/symfony-azure-distribution-${azure_distribution_bundle_version}.zip" />
+    </target>
+
+    <target name="build-docs">
+        <delete dir="build" />
+        <exec executable="git"><arg value="checkout" /><arg value="gh-pages" /></exec>
+
+        <exec output="overview.markdown" executable="git"><arg line="show master:Resources/docs/01_overview.md" /></exec>
+        <exec output="quickstart.markdown" executable="git"><arg line="show master:Resources/docs/02_quickstart.md" /></exec>
+        <exec output="installation.markdown" executable="git"><arg line="show master:Resources/docs/02_installation.md" /></exec>
+        <exec output="packaging.markdown" executable="git"><arg line="show master:Resources/docs/02_packaging.md" /></exec>
+        <exec output="session.markdown" executable="git"><arg line="show master:Resources/docs/03_session.md" /></exec>
+        <exec output="azure_env.markdown" executable="git"><arg line="show master:Resources/docs/04_azure_environment.md" /></exec>
+        <exec output="storage.markdown" executable="git"><arg line="show master:Resources/docs/04_storage.md" /></exec>
+        <exec output="table.markdown" executable="git"><arg line="show master:Resources/docs/05_table.md" /></exec>
+        <exec output="sharding.markdown" executable="git"><arg line="show master:Resources/docs/06_sharding.md" /></exec>
+        <exec output="assets.markdown" executable="git"><arg line="show master:Resources/docs/07_assets.md" /></exec>
+        <exec output="logging.markdown" executable="git"><arg line="show master:Resources/docs/09_logging.md" /></exec>
+        <exec output="troubleshooting.markdown" executable="git"><arg line="show master:Resources/docs/08_troubleshooting.md" /></exec>
+
+        <exec executable="jekyll"><arg value="--pygments" /></exec>
+
+        <exec executable="git"><arg value="add" /><arg value="." /></exec>
+        <exec executable="git"><arg value="commit" /><arg value="-m" /><arg value="Synchronize docs from master branch" /></exec>
+        <exec executable="git"><arg value="checkout" /><arg value="master" /></exec>
+    </target>
+
+    <macrodef name="download_github">
+        <attribute name="url" default="" />
+        <attribute name="target" default="" />
+
+        <sequential>
+            <get src="@{url}" dest="build/temp.zip"/>
+            <unzip src="build/temp.zip" dest="build/azure-distribution-bundle/@{target}" />
+
+            <dirset id="github.dir" dir="build/azure-distribution-bundle/@{target}" includes="*"/>
+            <local name="prop.github.dir"/>
+            <property name="prop.github.dir" refid="github.dir"/>
+
+            <move todir="build/azure-distribution-bundle/@{target}">
+                <fileset dir="build/azure-distribution-bundle/@{target}/${prop.github.dir}">
+                    <include name="**/**" />
+                </fileset>
+            </move>
+
+            <delete dir="build/azure-distribution-bundle/@{target}/${prop.github.dir}" />
+        </sequential>
+    </macrodef>
+</project>

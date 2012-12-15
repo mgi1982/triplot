@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Role name="">
+    <Instances count="2" />
+    <ConfigurationSettings>
+        <!--
+             Configuration for Diagnostics Storage Account.
+
+             Delete this attribute if you don't want diagnostics for your role.
+        -->
+        <!--<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value=""/>-->
+    </ConfigurationSettings>
+</Role>
+

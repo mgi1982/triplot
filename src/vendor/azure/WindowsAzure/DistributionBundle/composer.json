@@ -1,0 +1,16 @@
+{
+    "name": "beberlei/azure-distribution-bundle",
+    "type": "symfony-bundle",
+    "authors": [
+        {"name": "Benjamin Eberlei", "email": "kontakt@beberlei.de"}
+    ],
+    "require": {
+        "symfony/symfony": ">=2.0.10,<2.1.0-dev",
+        "beberlei/azure-blob-storage": "*"
+    },
+    "autoload": {
+        "psr-0": { "WindowsAzure\\DistributionBundle":"" }
+    },
+    "target-dir": "WindowsAzure/DistributionBundle"
+}
+

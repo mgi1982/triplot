@@ -1,0 +1,13 @@
+{
+    "name": "doctrine/key-value-store",
+    "require": {
+        "doctrine/common": "2.1.*"
+    },
+    "description": "Simple Key-Value Store Abstraction Layer that maps to PHP objects, allowing for many backends.",
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {
+            "Doctrine\\KeyValueStore\\": "lib/"
+        }
+    }
+}

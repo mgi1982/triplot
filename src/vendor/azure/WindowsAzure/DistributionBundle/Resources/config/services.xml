@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="windows_azure_distribution.config.config_dir">%kernel.root_dir%/azure</parameter>
+        <parameter key="windows_azure_distribution.config.application_root">%kernel.root_dir%/../</parameter>
+        <parameter key="windows_azure_distribution.config.bin_dir">%kernel.root_dir%/../bin</parameter>
+        <parameter key="windows_azure_distribution.config.deployment" type="collection" />
+        <parameter key="windows_azure_distribution.config.diagnostics.storage" type="collection" />
+
+        <parameter key="windows_azure_distribution.deployment.azure_sdk_command_builder.class">WindowsAzure\DistributionBundle\Deployment\AzureSDKCommandBuilder</parameter>
+        <parameter key="windows_azure_distribution.deployment.class">WindowsAzure\DistributionBundle\Deployment\AzureDeployment</parameter>
+        <parameter key="windows_azure_distribution.cache_warmer.dbtable.class">WindowsAzure\DistributionBundle\CacheWarmer\DbSessionTable</parameter>
+        <parameter key="windows_azure_distribution.storage_registry.class">Beberlei\AzureBlobStorage\StorageRegistry</parameter>
+        <parameter key="windows_azure_distribution.assets.webrole.class">WindowsAzure\DistributionBundle\Deployment\Assets\WebRoleStrategy</parameter>
+        <parameter key="windows_azure_distribution.assets.blob.class">WindowsAzure\DistributionBundle\Deployment\Assets\BlobStrategy</parameter>
+        <parameter key="windows_azure_distribution.session_storage.pdo.class">Symfony\Component\HttpFoundation\SessionStorage\PdoSessionStorage</parameter>
+    </parameters>
+
+    <services>
+        <service id="windows_azure_distribution.deployment.azure_sdk_command_builder" class="%windows_azure_distribution.deployment.azure_sdk_command_builder.class%">
+            <argument>%windows_azure_distribution.config.application_root%</argument>
+        </service>
+
+        <service id="windows_azure_distribution.deployment" class="%windows_azure_distribution.deployment.class%">
+            <argument>%windows_azure_distribution.config.config_dir%</argument>
+            <argument>%windows_azure_distribution.config.bin_dir%</argument>
+            <argument>%windows_azure_distribution.config.deployment%</argument>
+            <argument>%windows_azure_distribution.config.diagnostics.storage%</argument>
+        </service>
+
+        <service id="windows_azure_distribution.storage_registry" class="%windows_azure_distribution.storage_registry.class%">
+        </service>
+
+        <service id="windows_azure_distribution.assets.webrole" class="%windows_azure_distribution.assets.webrole.class%">
+            <argument type="service" id="service_container" />
+        </service>
+        <service id="windows_azure_distribution.assets.blob" class="%windows_azure_distribution.assets.blob.class%">
+            <argument type="service" id="service_container" />
+        </service>
+    </services>
+</container>
