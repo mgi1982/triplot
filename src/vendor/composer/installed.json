@@ -950,7 +950,6 @@
                 "Doctrine\\DBAL": "lib/"
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
@@ -1024,7 +1023,6 @@
                 "Doctrine\\ORM": "lib/"
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
@@ -1104,7 +1102,6 @@
                 "src/functions.php"
             ]
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
@@ -1154,7 +1151,6 @@
                 "Twig_": "lib/"
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "BSD-3"
         ],
@@ -1205,7 +1201,6 @@
                 "Twig_Extensions_": "lib/"
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
@@ -1517,7 +1512,6 @@
                 "WindowsAzure\\": ""
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "Apache-2.0"
         ],
@@ -1562,7 +1556,6 @@
                 "WindowsAzure\\DistributionBundle": ""
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
