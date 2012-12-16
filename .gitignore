@@ -17,3 +17,4 @@ src/app/config/parameters.yml
 # Composer autoloaders
 src/vendor/autoload.php
 src/vendor/composer/autoload_real.php
+src/vendor/composer/autoload_classmap.php
