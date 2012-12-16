@@ -1,2 +1,2 @@
-#[config]
-#command = cd src & cmd.exe /c ""%ProgramFiles(x86)%\PHP\v5.3\php.exe"" app/console asset:install
+[config]
+command = cd src & cmd.exe /c ""%ProgramFiles(x86)%\PHP\v5.3\php.exe"" app/console asset:install
