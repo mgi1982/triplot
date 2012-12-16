@@ -1,5 +1,5 @@
 triplot_triplot_homepage:
-    pattern:  /app
+    pattern:  /
     defaults: { _controller: TriplotTriplotBundle:Default:index }
 
 triplot_triplot_import:
