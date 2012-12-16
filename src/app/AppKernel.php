@@ -4,6 +4,8 @@ use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use WindowsAzure\DistributionBundle\HttpKernel\AzureKernel;
 
+require_once 'azure-distribution-bundle/WindowsAzure/DistributionBundle/WindowsAzureDistributionBundle.php';
+
 class AppKernel extends Kernel
 {
     public function registerBundles()
