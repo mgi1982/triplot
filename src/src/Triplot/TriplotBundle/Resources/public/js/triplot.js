@@ -1,22 +1,23 @@
-var fotos = $.parseJSON('<?php echo json_encode($fotos) ?>');
 var map = null;
 var markers = [];
     
 function initialize() {
     var mapOptions = {
-        center: new google.maps.LatLng(40.5, -74),
+        center: new google.maps.LatLng(40.7, -73.8),
         zoom: 10,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    map = new google.maps.Map(document.getElementById("map"),
+    map = new google.maps.Map(document.getElementById("mapa"),
         mapOptions);
     renderMarkers();
 }
 
 function renderMarkers() {
+    
     var infowindow = new google.maps.InfoWindow({
         content: ''
     });
+    
     for(var index in fotos) {
         var latLng = new google.maps.LatLng(fotos[index].latitude, fotos[index].longitude);
         var marker = new google.maps.Marker({
@@ -24,7 +25,9 @@ function renderMarkers() {
             map: map
         });
 
-        marker.html = '<img class="info_picture" src="' + fotos[index].img + '" />';
+        marker.html = '<img class="info_picture" src="/bundles/triplottriplot/pictures/' + fotos[index].file + '" />';
+    
+        
         markers.push(marker);
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.setContent(this.html);
@@ -46,5 +49,4 @@ function AutoCenter() {
     
 $(document).ready(function(){
     initialize();
-         
 });

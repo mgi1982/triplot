@@ -2,3 +2,27 @@
     width: 100%;
     height: 100%;
 }
+
+.info_picture {
+    width: 200px;   
+}
+
+.header {
+    font-size: 40px;
+    color: darkblue;
+    text-align: center;
+}
+
+ul#timeline {
+    height: 50px;
+}
+
+ul#timeline li.day {
+    float: left;
+    list-style-type: none;
+    padding-right: 15px;
+}
+
+#map {
+    clear: both;
+}
