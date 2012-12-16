@@ -1,3 +1,8 @@
 triplot_triplot_homepage:
-    pattern:  /hello/{name}
+    pattern:  /myapp
     defaults: { _controller: TriplotTriplotBundle:Default:index }
+
+
+triplot_triplot_import:
+    pattern:  /import
+    defaults: { _controller: TriplotTriplotBundle:Default:import }
