@@ -1,7 +1,10 @@
 triplot_triplot_homepage:
-    pattern:  /myapp
+    pattern:  /app
     defaults: { _controller: TriplotTriplotBundle:Default:index }
 
+triplot_triplot_get_by_day:
+    pattern:  /app/{{day}}
+    defaults: { _controller: TriplotTriplotBundle:Default:day }
 
 triplot_triplot_import:
     pattern:  /import

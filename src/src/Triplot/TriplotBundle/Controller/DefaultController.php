@@ -17,13 +17,55 @@ class DefaultController extends Controller {
     }
 
     public function indexAction() {
+
+        $fotos = $this->getDoctrine()
+            ->getRepository('TriplotTriplotBundle:Fotos')
+            ->findAll();
+        $days = array(); 
+        $fotos_array = array();
+        
+        foreach($fotos as $foto) {
+            if (!in_array($foto->getDate(), $days)) {
+                $days[] = $foto->getDate();
+            }
+            $f = array();
+            $f['latitude'] = $foto->getLatitude();
+            $f['longitude'] = $foto->getLongitude();
+            $f['file'] = $foto->getFile();
+            $f['date'] = $foto->getDate();
+            $fotos_array[] = $f;
+        }
+        
+        $jsonFotos = json_encode($fotos_array);
+        $jsonObject = "<script type='text/javascript'> var fotos = JSON.parse('$jsonFotos');</script>"; 
         
         return $this->render('TriplotTriplotBundle:Default:index.html.twig', 
-                array('pictures' => $pictures)
+                array('fotos' => $fotos_array, 'days' => $days, 'jsonObject' => $jsonObject)
         );
     }
 
+    public function dayAction($day) {
+        
+        $fotos = $this->getDoctrine()
+            ->getRepository('TriplotTriplotBundle:Fotos')
+            ->findAll();
+        $days = array(); 
+        
+        foreach($fotos as $foto) {
+            if (!in_array($foto->getDate(), $days)) {
+                $days[] = $foto->getDate();
+            }
+        }
+
+        return $this->render('TriplotTriplotBundle:Default:index.html.twig', 
+                array('fotos' => $fotos, 'days' => $days)
+        );
+    }
+    
     public function importAction() {
+        $em = $this->getDoctrine()->getManager();
+        $em->createQuery('DELETE FROM TriplotTriplotBundle:Fotos')->getResult();
+        
         $dir = __DIR__ . '/../Resources/public/pictures/';
         $files = array();
         if ($handle = opendir($dir)) {
@@ -55,26 +97,24 @@ class DefaultController extends Controller {
                 
                 if (isset($item['longitude']) && isset($item['latitude'])) {
                     $item['time'] = $exif['DateTime'];
-                    $item['img'] = $file;
                     $files[] = $item;
-                   
                     //Add to the database $item.
                     $f = new Fotos();
                     $f->setLatitude($item['latitude']);
                     $f->setLongitude($item['longitude']);
-                    $f->setDate($item['time']);
+                    $date = explode(' ', $item['time']);
+                    $f->setDate(str_replace(':', '/', $date[0]));
                     $f->setTimestamp(strtotime($item['time']));
-                    
-                    $this->getDoctrine()
-                        ->getManager()
-                        ->persist($f)
-                        ->flush();
+                    $f->setFile($file);
+
+                    $em = $this->getDoctrine()->getManager(); 
+                    $em->persist($f);
+                    $em->flush();
                 }
             }
             
             closedir($handle);
         }
-        var_dump($files);
         return $this->render('TriplotTriplotBundle:Default:import.html.twig', array('files' => $files));
 
     }

@@ -14,16 +14,6 @@ class Fotos
      */
     private $id;
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
     /**
      * @var string $latitude
      */
@@ -40,10 +30,25 @@ class Fotos
     private $date;
 
     /**
-     * @var timestamp $timestamp
+     * @var string $file
+     */
+    private $file;
+
+    /**
+     * @var integer $timestamp
      */
     private $timestamp;
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set latitude
@@ -115,12 +120,35 @@ class Fotos
     }
 
     /**
-     * Set timestamp
+     * Set file
      *
-     * @param timestamp $timestamp
+     * @param string $file
      * @return Fotos
      */
-    public function setTimestamp(\timestamp $timestamp)
+    public function setFile($file)
+    {
+        $this->file = $file;
+    
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string 
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set timestamp
+     *
+     * @param integer $timestamp
+     * @return Fotos
+     */
+    public function setTimestamp($timestamp)
     {
         $this->timestamp = $timestamp;
     
@@ -130,7 +158,7 @@ class Fotos
     /**
      * Get timestamp
      *
-     * @return timestamp 
+     * @return integer 
      */
     public function getTimestamp()
     {

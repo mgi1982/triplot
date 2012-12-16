@@ -14,6 +14,8 @@ Triplot\TriplotBundle\Entity\Fotos:
         type: string
       date:
         type: string
+      file:
+        type: string
       timestamp:
         type: integer
           
