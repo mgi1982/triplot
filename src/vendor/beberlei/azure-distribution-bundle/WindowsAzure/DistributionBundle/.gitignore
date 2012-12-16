@@ -1,0 +1,6 @@
+vendor
+composer.lock
+build
+_site
+*.csdef.work
+phpunit.xml
