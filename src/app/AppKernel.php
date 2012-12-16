@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use WindowsAzure\DistributionBundle\HttpKernel\AzureKernel;
 
 class AppKernel extends Kernel
 {
@@ -19,6 +20,7 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new WindowsAzure\DistributionBundle\WindowsAzureDistributionBundle(),
             new Triplot\TriplotBundle\TriplotTriplotBundle(),
            );
 

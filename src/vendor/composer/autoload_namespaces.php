@@ -6,6 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'WindowsAzure\\DistributionBundle' => $vendorDir . '/beberlei/azure-distribution-bundle/',
+    'WindowsAzure\\' => $vendorDir . '/microsoft/windowsazure/',
     'Twig_Extensions_' => $vendorDir . '/twig/extensions/lib/',
     'Twig_' => $vendorDir . '/twig/twig/lib/',
     'Symfony\\Bundle\\SwiftmailerBundle' => $vendorDir . '/symfony/swiftmailer-bundle/',
