@@ -23,3 +23,5 @@ More features to add:
 * Allow saving of the plotted map in the user Google Maps
 * Adding comments to the pictures
 * Sharing the pictures on Twitter/Facebook
+
+### The W D C T F Rises ###
