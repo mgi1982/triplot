@@ -20,7 +20,7 @@
                 "symfony/symfony": ">=2.1.0",
                 "microsoft/windowsazure": "dev-master"
             },
-            "time": "1354551750",
+            "time": "2012-12-03 16:22:30",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -649,7 +649,7 @@
                 "pear-pear/mail_mime": "*",
                 "pear-pear/mail_mimedecode": "*"
             },
-            "time": "1345253257",
+            "time": "2012-08-18 01:27:37",
             "type": "library",
             "installation-source": "source",
             "autoload": {
