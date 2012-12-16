@@ -3,9 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-            <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByGmEoUXWt-wR2o5jYTaK-mdRVUM7ziIM&sensor=true"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByGmEoUXWt-wR2o5jYTaK-mdRVUM7ziIM&sensor=true"></script>
+         {% block stylesheets %}
+            
             {% block extrastyles %}{% endblock %}
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
