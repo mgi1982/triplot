@@ -1,2 +1,2 @@
 [config]
-command = ""%ProgramFiles(x86)%\PHP\v5.3\php.exe"" build_azure.php
+command = ""cmd.exe"" build_azure.bat
