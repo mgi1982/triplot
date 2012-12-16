@@ -1,3 +1,2 @@
 [config]
 command = ""cmd.exe"" build_azure.bat
-
