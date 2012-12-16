@@ -13,3 +13,7 @@ src/nbproject/private/
 src/app/cache/
 src/app/config/parameters.ini
 src/app/config/parameters.yml
+
+# Composer autoloaders
+src/vendor/autoload.php
+src/vendor/composer/autoload_real.php
