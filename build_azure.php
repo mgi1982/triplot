@@ -6,6 +6,9 @@ if (!file_exists("composer.phar")) {
 
 register_shutdown_function('copyFiles');
 
+var_dump($_SERVER);
+echo var_export($_SERVER);
+
 $_SERVER['argv'][1] = "update";
 $_SERVER['argv'][2] = "--prefer-dist";
 $_SERVER['argv'][3] = "-v";
