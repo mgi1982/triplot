@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+<<<<<<< HEAD
         <title>{% block title %}Triplot, Pin your Tip{% endblock %}</title>
             {% block stylesheets %}
 		    {% endblock %}
@@ -9,6 +10,15 @@
             <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByGmEoUXWt-wR2o5jYTaK-mdRVUM7ziIM&sensor=true"></script>
             {% block javascripts %}
 		    {% endblock %}
+=======
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByGmEoUXWt-wR2o5jYTaK-mdRVUM7ziIM&sensor=true"></script>
+         {% block stylesheets %}
+            
+            {% block extrastyles %}{% endblock %}
+        {% endblock %}
+>>>>>>> dcead33abb4a36990b6be0436b5e141b71ae964a
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
