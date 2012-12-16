@@ -33,7 +33,9 @@ function renderMarkers(date) {
                 map: map
             });
 
-            marker.html = '<img class="info_picture" src="/bundles/triplottriplot/pictures/' + fotos[index].file + '" />';
+            marker.html = '<div class="">' + fotos[index].date + '</div>\n\
+                <img class="info_picture" \n\
+                src="/bundles/triplottriplot/pictures/' + fotos[index].file + '" />';
     
             markers.push(marker);
             google.maps.event.addListener(marker, 'click', function() {
@@ -61,38 +63,43 @@ function slideshow() {
     }
     
     var timeout = 2000;
-    var day0 = $('#timeline').children()[0];
-    var nextDay = $('.day.selected').next();
+    var day0 = $($('#timeline').children()[0]);
+    var nextDay = $($('.day.selected').next());
+    var timeline = $('#timeline');
     
     if (nextDay.length == 0) {
-       $('#timeline').find('li.day').removeClass('selected');
-       renderMarkers($(day0).attr('data')); 
-       $(day0).addClass('selected'); 
+        timeline.find('li.day').removeClass('selected');
+        renderMarkers(day0.attr('data')); 
+        day0.addClass('selected'); 
     } else {
-       $('#timeline').find('li.day').removeClass('selected');
-       renderMarkers($(nextDay).attr('data')); 
-       $(nextDay).addClass('selected'); 
+        timeline.find('li.day').removeClass('selected');
+        renderMarkers($(nextDay).attr('data')); 
+        nextDay.addClass('selected'); 
     }
+    
     setTimeout(slideshow, timeout); 
 }
     
 $(document).ready(function(){
     initialize();
+    
     $('#timeline').find('.day').click(function(){
-       $('#timeline').find('li.day').removeClass('selected');
-       renderMarkers($(this).attr('data')); 
-       $(this).addClass('selected');
+        $('#timeline').find('li.day').removeClass('selected');
+        renderMarkers($(this).attr('data')); 
+        $(this).addClass('selected');
     });
+    
     $('#timeline').find('.slideshow').click(function(){
-       if ($(this).text() == 'Stop') {
-           $(this).text('Start').removeClass('playing');
-          slideshow_stop = true; 
-          $('#timeline').find('li.day').removeClass('selected');
-          renderMarkers();
-       } else {
-          $(this).text('Stop').addClass('playing');
-          slideshow_stop = false; 
-          slideshow();
-       }
+        var btn = $(this); 
+        if (btn.text() == 'Stop') {
+            btn.text('Start').removeClass('playing');
+            slideshow_stop = true; 
+            $('#timeline').find('li.day').removeClass('selected');
+            renderMarkers();
+        } else {
+            btn.text('Stop').addClass('playing');
+            slideshow_stop = false; 
+            slideshow();
+        }
     });
 });

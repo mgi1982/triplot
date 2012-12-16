@@ -17,51 +17,38 @@ class DefaultController extends Controller {
     }
 
     public function indexAction() {
-
         $fotos = $this->getDoctrine()
             ->getRepository('TriplotTriplotBundle:Fotos')
             ->findAll();
         $days = array(); 
-        $fotos_array = array();
+        $fs = array();
         
         foreach($fotos as $foto) {
             if (!in_array($foto->getDate(), $days)) {
                 $days[] = $foto->getDate();
             }
+            
             $f = array();
             $f['latitude'] = $foto->getLatitude();
             $f['longitude'] = $foto->getLongitude();
             $f['file'] = $foto->getFile();
             $f['date'] = $foto->getDate();
-            $fotos_array[] = $f;
+            $fs[] = $f;
         }
         
-        $jsonFotos = json_encode($fotos_array);
-        $jsonObject = "<script type='text/javascript'> var fotos = JSON.parse('$jsonFotos');</script>"; 
+        $jfs = json_encode($fs);
+        
+        $includeJsonFotos = "<script type='text/javascript'>
+            var fotos = JSON.parse('$jfs');
+        </script>"; 
         
         return $this->render('TriplotTriplotBundle:Default:index.html.twig', 
-                array('fotos' => $fotos_array, 'days' => $days, 'jsonObject' => $jsonObject)
+                array('fotos' => $jfs, 
+                    'days' => $days, 
+                    'includeJsonFotos' => $includeJsonFotos)
         );
     }
 
-    public function dayAction($day) {
-        
-        $fotos = $this->getDoctrine()
-            ->getRepository('TriplotTriplotBundle:Fotos')
-            ->findAll();
-        $days = array(); 
-        
-        foreach($fotos as $foto) {
-            if (!in_array($foto->getDate(), $days)) {
-                $days[] = $foto->getDate();
-            }
-        }
-
-        return $this->render('TriplotTriplotBundle:Default:index.html.twig', 
-                array('fotos' => $fotos, 'days' => $days)
-        );
-    }
-    
     public function importAction() {
         $em = $this->getDoctrine()->getManager();
         $em->createQuery('DELETE FROM TriplotTriplotBundle:Fotos')->getResult();

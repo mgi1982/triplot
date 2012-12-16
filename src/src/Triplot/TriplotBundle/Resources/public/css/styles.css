@@ -18,11 +18,10 @@ body {
 }
 
 ul#timeline {
-    height: 50px;
 }
 
 ul#timeline li.day {
-    float: left;
+    display: inline;
     list-style-type: none;
     padding-right: 15px;
 }
@@ -38,4 +37,8 @@ ul#timeline li.day.selected {
 .playing {
     color: darkgreen;
     font-weight: bold;
+}
+
+.slideshow {
+    clear: both;
 }

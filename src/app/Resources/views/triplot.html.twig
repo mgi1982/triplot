@@ -2,11 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Triplot, Pin your Tip{% endblock %}</title>
+        <title>{% block title %}Triplot, Pin your Trip{% endblock %}</title>
             {% block stylesheets %}
 		    {% endblock %}
-            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-            <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByGmEoUXWt-wR2o5jYTaK-mdRVUM7ziIM&sensor=true"></script>
+            <script 
+                type="text/javascript" 
+                src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script 
+                type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByGmEoUXWt-wR2o5jYTaK-mdRVUM7ziIM&sensor=true"></script>
             {% block javascripts %}
 		    {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -19,13 +23,13 @@
                 {% endblock %}
             </div>
             <div class="content">
-            {% block content %}{% endblock %}    
+                {% block content %}{% endblock %}    
             </div>
             <div class="footer">
-            {% block footer %}{% endblock %}
+                {% block footer %}{% endblock %}
             </div>
         {% endblock %}
-    
-        {% block extrastyles %}{% endblock %}
+        {% block extrastyles %}
+        {% endblock %}
     </body>
 </html>
