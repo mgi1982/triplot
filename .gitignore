@@ -5,8 +5,8 @@ src/app/bootstrap*
 #src/vendor/*
 src/*/logs/*
 src/*/cache/*
-src/web/uploads/*
-src/web/bundles/*
+#src/web/uploads/*
+#src/web/bundles/*
 
 # Configuration files
 src/nbproject/private/
