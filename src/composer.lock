@@ -20,7 +20,7 @@
                 "symfony/symfony": ">=2.1.0",
                 "microsoft/windowsazure": "dev-master"
             },
-            "time": "2012-12-03 16:22:30",
+            "time": "1354551750",
             "type": "symfony-bundle",
             "installation-source": "source",
             "autoload": {
@@ -28,7 +28,6 @@
                     "WindowsAzure\\DistributionBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -140,7 +139,6 @@
                     "Doctrine\\DBAL": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -281,7 +279,6 @@
                     "Doctrine\\ORM": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -615,7 +612,6 @@
                     "src/functions.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -653,7 +649,7 @@
                 "pear-pear/mail_mime": "*",
                 "pear-pear/mail_mimedecode": "*"
             },
-            "time": "2012-08-18 01:27:37",
+            "time": "1345253257",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -661,7 +657,6 @@
                     "WindowsAzure\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
@@ -1476,7 +1471,6 @@
                     "Twig_Extensions_": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1524,7 +1518,6 @@
                     "Twig_": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3"
             ],
