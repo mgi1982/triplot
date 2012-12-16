@@ -1,20 +1,37 @@
 {% extends '::triplot.html.twig' %}
 
 {% block content %}
+{{jsonObject|raw}}
 <div id="container">
-    <div>
-    </div>
     <ul id="timeline">
         {% for day in days %}
             <li class='day' data='{{day}}'>{{ day }}</li>
         {% endfor %}
     </ul>
-    <div id="map">
+    <div id='map' style="position: absolute; width: 100%; height: 100%">
+        <div id="mapa" style="width: 100%; height: 100%">
 
+        </div>
     </div>
     <div id="foto">
 
     </div>
 </div>
-{{jsonObject|raw}}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+    
+	{% javascripts
+		'@TriplotTriplotBundle/Resources/public/js/triplot.js' %}
+		<script src="{{ asset_url }}" type="text/javascript"></script>
+	{% endjavascripts %}
+{% endblock %}
+        
+{% block stylesheets %}
+	{{ parent() }}
+	{% stylesheets 
+		'@TriplotTriplotBundle/Resources/public/css/styles.css' %} 
+		<link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+	{% endstylesheets %} 
 {% endblock %}
