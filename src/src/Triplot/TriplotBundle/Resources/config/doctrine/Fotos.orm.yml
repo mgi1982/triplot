@@ -15,7 +15,6 @@ Triplot\TriplotBundle\Entity\Fotos:
       date:
         type: string
       timestamp:
-        type: timestamp 
-      
+        type: integer
           
     lifecycleCallbacks: {  }
