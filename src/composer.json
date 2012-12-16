@@ -18,8 +18,13 @@
         "sensio/generator-bundle": "2.1.*",
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
-        "kriswallsmith/assetic": "1.1.*@dev"
+        "kriswallsmith/assetic": "1.1.*@dev",
+        "beberlei/azure-distribution-bundle": "dev-master",
+        "microsoft/windowsazure": "dev-master"
     },
+    "repositories": [
+            { "type": "pear", "url": "http://pear.php.net" }
+    ],
     "scripts": {
         "post-install-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
