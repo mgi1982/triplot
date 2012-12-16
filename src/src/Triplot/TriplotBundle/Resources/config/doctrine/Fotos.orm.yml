@@ -1,0 +1,21 @@
+Triplot\TriplotBundle\Entity\Fotos:
+    type: entity
+    table: fotos
+    repositoryClass: Triplot\TriplotBundle\Entity\FotosRepository
+    fields:
+      id:
+        type: integer
+        id: true
+        generator:
+          strategy: AUTO
+      latitude:
+        type: string
+      longitude:
+        type: string
+      date:
+        type: string
+      timestamp:
+        type: timestamp 
+      
+          
+    lifecycleCallbacks: {  }
