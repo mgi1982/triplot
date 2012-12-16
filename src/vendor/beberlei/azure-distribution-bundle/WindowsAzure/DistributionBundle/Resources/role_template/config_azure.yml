@@ -1,0 +1,35 @@
+# Azure derives from production configuration and
+# adds all configuration necessary for Azure specific
+# deployment.
+imports:
+    - { resource: config_prod.yml }
+    - { resource: parameters_azure.yml }
+
+framework:
+    templating:
+        # Enter Windows Azure Storage Account Urls if you don't want to serve assets from web-roles.
+        #- assets_base_urls: { http: [], ssl: [] }
+        assets_version: %assets_azure_version%
+        assets_version_format: "v%%2$s/%%1$s"
+
+windows_azure_distribution:
+    session:
+        type: %session_type%
+        database:
+            host: %database_host%
+            username: %database_user%
+            password: %database_password%
+            database: %database_name%
+
+# This parts should be moved to the config.yml as they are
+# used during packaging aswell and need to be availble in the
+# dev and prod environments.
+#
+#    diagnostics:
+#        accountName: xxx
+#        accountKey: xxx
+#    deployment:
+#      roleFiles:
+#          exclude:
+#            - vendor
+

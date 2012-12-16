@@ -1,0 +1,24 @@
+{
+    "name": "beberlei/azure-distribution-bundle",
+    "description": "Integration of Windows Azure SDK and workflows into Symfony applications.",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "authors": [
+        {"name": "Benjamin Eberlei", "email": "kontakt@beberlei.de"}
+    ],
+    "require": {
+        "symfony/symfony": ">=2.1.0",
+        "microsoft/windowsazure": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "http://pear.php.net"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "WindowsAzure\\DistributionBundle":"" }
+    },
+    "target-dir": "WindowsAzure/DistributionBundle"
+}
+

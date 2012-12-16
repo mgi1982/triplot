@@ -2,7 +2,7 @@
 src/app/bootstrap*
 
 # Symfony directories
-src/vendor/*
+#src/vendor/*
 src/*/logs/*
 src/*/cache/*
 src/web/uploads/*
@@ -15,6 +15,6 @@ src/app/config/parameters.ini
 src/app/config/parameters.yml
 
 # Composer autoloaders
-src/vendor/autoload.php
-src/vendor/composer/autoload_real.php
-src/vendor/composer/autoload_classmap.php
+#src/vendor/autoload.php
+#src/vendor/composer/autoload_real.php
+#src/vendor/composer/autoload_classmap.php

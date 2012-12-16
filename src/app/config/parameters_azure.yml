@@ -1,0 +1,3 @@
+parameters:
+    session_type: pdo
+    assets_azure_version: 1

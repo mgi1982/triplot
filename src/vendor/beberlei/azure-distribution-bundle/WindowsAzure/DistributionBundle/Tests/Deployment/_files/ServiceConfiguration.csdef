@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" serviceName="SymfonyOnAzure" osFamily="2" osVersion="*">
+    <Role name="Sf2.Web">
+        <Instances count="1"/>
+        <ConfigurationSettings>
+        </ConfigurationSettings>
+    </Role>
+</ServiceConfiguration>
